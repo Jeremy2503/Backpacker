@@ -3,44 +3,30 @@ const { Schema } = mongoose;
 
 const destinationsSchema = new Schema({
     name: { type: String, required: true },
+    state: { type: String },
     category: {
         type: String,
+        enum: ["Beach", "Mountains & Outdoors", "Culture & Heritage"],
         required: true
     },
-    state: { type: String },
-    heroImage: { type: String },
-    shortDescription: { type: String },
-    budgetRange: { type: Number },
-    bestTimeToVisit: { type: String },
-    ideaDuraiton: { type: String },
+    images: [{ type: String }],
+    description: { type: String },
+    price: { type: Number },
     location: {
         latitude: { type: Number },
         longitude: { type: Number },
         timezone: { type: String }
     },
-    topActivities: [{ type: String }],
-    mustVisitPlaces: [{ type: String }],
-    rating: {
-        type: Number,
-        min: 0,
-        max: 5,
-        default: 0
-    },
-    totalReviews: { type: Number, default: 0 },
-    totalStays: { type: Number, default: 0 },
-    totalFoodSpots: { type: Number, default: 0 },
-    totalLocalGems: { type: Number, default: 0 },
-    isPopular: { type: Boolean, default: false },
-    isTrending: { type: Boolean, default: false },
-    viewCount: { type: Number, default: 0 },
-    howToReach: {
-        byAir: { type: String },
-        byTrain: { type: String },
-        byRoad: { type: String }
-    },
-    localTransport: [{ type: String }], // ["Taxi", "Bike Rental"]
-    nearestAirport: { type: String },
-    nearestRailway: { type: String }
+    // rating: {
+    //     type: Number,
+    //     min: 0,
+    //     max: 5,
+    //     default: 0
+    // },
+    // totalReviews: { type: Number, default: 0 },
+    // totalStays: { type: Number, default: 0 },
+    // totalFoodSpots: { type: Number, default: 0 },
+    // totalLocalGems: { type: Number, default: 0 },
 })
 
-mongoose.model("destinations",destinationsSchema);
+mongoose.model("destinations", destinationsSchema);
